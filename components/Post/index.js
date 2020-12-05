@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Post({ title, id, link }) {
+export default function Post({ title, id, link, description }) {
   return (
     <>
       {link ? (
@@ -10,7 +10,7 @@ export default function Post({ title, id, link }) {
       ) : (
         <div>
           <h3>{title}</h3>
-          <p>asdkjaskd</p>
+          <p>{description}</p>
         </div>
       )}
     </>

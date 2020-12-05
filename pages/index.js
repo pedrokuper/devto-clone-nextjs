@@ -6,7 +6,7 @@ import Posts from "../components/Posts";
 export default function Home({ json, id }) {
   return (
     <>
-      <Posts data={json} link={true} />
+      <Posts data={json} link={true} multiplePost={true} />
     </>
   );
 }

@@ -1,26 +1,29 @@
 import Posts from "../../components/Posts";
 
 //~ Componente
-export default function DynamicRoute({ json }) {
+export default function DynamicRoute({ json, description, title }) {
   return (
     <>
-      <Posts data={json} link={false} />
+      <Posts
+        data={json}
+        link={false}
+        multiplePost={false}
+        description={description}
+        title={title}
+      />
     </>
   );
 }
 
 //*Server side rendering - SSR
 export async function getServerSideProps({ params }) {
-  const data = await fetch("https://dev.to/api/articles?tag=javascript&top=1");
+  const data = await fetch(`https://dev.to/api/articles/${params.id}`);
   const json = await data.json();
-  const result = json.map((item) => {
-    return item.id;
-  });
 
   return {
     props: {
-      id: params.id,
-      json: json,
+      title: json.title,
+      description: json.description,
     },
   };
 }
